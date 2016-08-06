@@ -1,0 +1,21 @@
+.messagebubble {
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: inline-block;
+    font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.incoming-wrapper {
+    text-align: right;
+}
+
+.incoming {
+    color: white;
+    background: #0077e5;
+}
+
+.outgoing {
+    color: black;
+    background: #e5e4e4;
+}
