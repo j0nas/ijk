@@ -1,5 +1,9 @@
 I had an idea. This might turn out to be something in quite a while.
 
+Immediate roadmap:
+    Frontend:
+        Clickable answers
+
 TODO:
 - concept description
 - functional description

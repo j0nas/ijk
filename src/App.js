@@ -1,13 +1,15 @@
 import React from 'react';
-import MessageBubble from './MessageBubble';
+import Message from './Message';
 
 import "./style.css";
 
 const App = () => (
     <div className="App">
         <div className="msg-contain">
-            <MessageBubble msg="Hello!" incoming={true}/>
-            <MessageBubble msg="Hi!" incoming={false}/>
+            <Message msg="Hello!" incoming={true}/>
+            <Message msg="Hi!" incoming={false}/>
+            <Message msg="How are you doing?" incoming={false}/>
+            <Message msg="Fine, thanks! hbu?" incoming={true}/>
         </div>
     </div>
 );

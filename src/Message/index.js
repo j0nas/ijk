@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css";
 
-const MessageBubble = (props) => {
+const Message = (props) => {
     const type = (props.incoming ? "incoming" : "outgoing");
     return (
         <div className={(type + "-wrapper")}>
@@ -10,4 +10,4 @@ const MessageBubble = (props) => {
     );
 };
 
-export default MessageBubble;
+export default Message;
