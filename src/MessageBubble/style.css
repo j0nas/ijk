@@ -1,9 +1,11 @@
-.messagebubble {
+.message {
     padding: 10px;
     border-radius: 20px;
     font-size: 14px;
     display: inline-block;
     font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+    max-width: 90%;
+    word-wrap: break-word;
 }
 
 .incoming-wrapper {

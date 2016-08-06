@@ -4,8 +4,8 @@ import "./style.css";
 const MessageBubble = (props) => {
     const type = (props.incoming ? "incoming" : "outgoing");
     return (
-        <div className={"messagebubble-wrapper " + (type + "-wrapper")}>
-            <div className={"messagebubble " + type}>{props.msg}</div>
+        <div className={(type + "-wrapper")}>
+            <div className={"message " + type}>{props.msg}</div>
         </div>
     );
 };
