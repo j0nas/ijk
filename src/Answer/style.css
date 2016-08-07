@@ -1,0 +1,14 @@
+.answer-wrapper {
+    text-align: center;
+    margin: 20px;
+}
+
+.answer {
+    background: lightblue;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.answer:hover {
+    background: darkcyan;
+}
