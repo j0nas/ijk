@@ -25,19 +25,28 @@ class App extends Component {
     }
 
     componentDidMount() {
-        this.popMessageToState();
+        this.shiftMessageToState();
     }
 
-    popMessageToState() {
+    shiftMessageToState(clicked) {
         const message = this.messages.shift();
+        const messages = this.state.messages;
+
+        if (clicked) {
+            messages[messages.length - 1].isAnswer = true;
+        }
+
         if (!message) {
             return;
         }
 
-        const messages = this.state.messages;
         messages.push(message);
         this.setState({messages: messages});
-        setTimeout(() => this.popMessageToState(), 1000);
+
+
+        if (message.incoming) {
+            this.shiftMessageToState();
+        }
     }
 
     render() {
@@ -45,10 +54,17 @@ class App extends Component {
             <div className="App">
                 <div className="msg-contain" id="messages-contain">
                     {this.state.messages.map(message =>
-                        <Message
-                            msg={message.msg}
-                            incoming={message.incoming}
-                            key={message.msg + Math.random()}/>
+                        message.incoming || message.isAnswer ?
+                            <Message
+                                msg={message.msg}
+                                incoming={message.incoming}
+                                key={message.msg + Math.random()}
+                            /> :
+                            <Question
+                                msg={message.msg}
+                                onClick={() => this.shiftMessageToState(true)}
+                                key={message.msg + Math.random()}
+                            />
                     )}
                 </div>
             </div>

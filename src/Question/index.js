@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Message from '../Message';
 import Answer from '../Answer';
 
 class Question extends Component {
@@ -16,12 +15,8 @@ class Question extends Component {
     render() {
         return (
             <div id={this.customId}>
-                <Message msg={this.props.msg} incoming={true}/>
                 <div className="answers">
-                    {this.props.answers ?
-                        this.props.answers.map(answer => <Answer msg={answer} key={answer} onClick={this.props.onClick}/>)
-                        : <Answer msg={this.props.msg} onClick={() => this.clicked()}/>
-                    }
+                    <Answer msg={this.props.msg} onClick={() => this.clicked()}/>
                 </div>
             </div>
         );
