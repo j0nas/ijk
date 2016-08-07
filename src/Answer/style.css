@@ -1,11 +1,9 @@
 .answer-wrapper {
-    text-align: center;
     margin-top: 5px;
 }
 
 .answer {
     background: lightblue;
-    margin: 0 auto;
     cursor: pointer;
 }
 

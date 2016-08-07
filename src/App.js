@@ -7,28 +7,37 @@ import "./style.css";
 class App extends Component {
     constructor() {
         super();
+
+        this.messages = [
+            {msg: "Hi", incoming: true},
+            {msg: "Hello!", incoming: false},
+            {msg: "How are you?", incoming: true},
+            {msg: "Good!", incoming: false},
+            {msg: "How nice.", incoming: true},
+            {msg: "Quite.", incoming: false},
+            {msg: "kthxbye.", incoming: true},
+            {msg: "lol bye", incoming: false},
+        ];
+
         this.state = {
-            messages: [
-                {msg: "Hello", incoming: false},
-                {msg: "Hi!", incoming: true},
-                {msg: "How are you doing?", incoming: false},
-                {
-                    msg: "Fine, thanks! hbu?", incoming: true, answers: [
-                    "fine",
-                    "great!",
-                    "i'm kinda worried about the upcoming robot uprising"
-                ]
-                }
-            ]
+            messages: []
         }
     }
 
-    addAnswer(answer) {
-        document.getElementById("question-question").style.display = "none";
+    componentDidMount() {
+        this.popMessageToState();
+    }
 
-        const messages2 = this.state.messages;
-        messages2.push({msg: answer, incoming: false});
-        this.setState({messages: messages2});
+    popMessageToState() {
+        const message = this.messages.shift();
+        if (!message) {
+            return;
+        }
+
+        const messages = this.state.messages;
+        messages.push(message);
+        this.setState({messages: messages});
+        setTimeout(() => this.popMessageToState(), 1000);
     }
 
     render() {
@@ -36,16 +45,11 @@ class App extends Component {
             <div className="App">
                 <div className="msg-contain" id="messages-contain">
                     {this.state.messages.map(message =>
-                        message.answers ?
-                            <Question
-                                id="question-question"
-                                onClick={(answer) => this.addAnswer(answer)}
-                                msg="Fine, thanks! hbu?"
-                                answers={message.answers}
-                                key={message.msg}
-                            /> :
-                            <Message msg={message.msg} incoming={message.incoming} key={message.msg}/>)}
-
+                        <Message
+                            msg={message.msg}
+                            incoming={message.incoming}
+                            key={message.msg + Math.random()}/>
+                    )}
                 </div>
             </div>
         );
