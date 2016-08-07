@@ -1,6 +1,6 @@
 .answer-wrapper {
     text-align: center;
-    margin: 20px;
+    margin-top: 5px;
 }
 
 .answer {
@@ -11,4 +11,8 @@
 
 .answer:hover {
     background: darkcyan;
+}
+
+.answers {
+    margin-top: 20px;
 }

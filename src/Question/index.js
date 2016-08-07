@@ -4,8 +4,11 @@ import Answer from '../Answer';
 
 const Question = (props) => (
     <div>
-        <Message msg={props.msg} incoming={true} />
-        {props.answers.map(answer => <Answer msg={answer} key={answer}/>)}
+        <Message msg={props.msg} incoming={true}/>
+        <div className="answers" id={props.id}>
+            {props.answers.map(answer =>
+                <Answer msg={answer} key={answer} onClick={props.onClick}/>)}
+        </div>
     </div>
 );
 
