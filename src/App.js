@@ -7,17 +7,23 @@ import "./style.css";
 class App extends Component {
     constructor() {
         super();
-        this.state =  {
+        this.state = {
             messages: [
                 {msg: "Hello", incoming: false},
                 {msg: "Hi!", incoming: true},
                 {msg: "How are you doing?", incoming: false},
+                {
+                    msg: "Fine, thanks! hbu?", incoming: true, answers: [
+                    "fine",
+                    "great!",
+                    "i'm kinda worried about the upcoming robot uprising"
+                ]
+                }
             ]
         }
     }
 
     addAnswer(answer) {
-        console.log(answer);
         document.getElementById("question-question").style.display = "none";
 
         const messages2 = this.state.messages;
@@ -30,17 +36,16 @@ class App extends Component {
             <div className="App">
                 <div className="msg-contain" id="messages-contain">
                     {this.state.messages.map(message =>
-                        <Message msg={message.msg} incoming={message.incoming} key={message.msg} />)}
-                    <Question
-                        id="question-question"
-                        onClick={(answer) => this.addAnswer(answer)}
-                        msg="Fine, thanks! hbu?"
-                        answers={
-                            ["fine",
-                                "great!",
-                                "i'm kinda worried about the upcoming robot uprising"]
-                        }
-                    />
+                        message.answers ?
+                            <Question
+                                id="question-question"
+                                onClick={(answer) => this.addAnswer(answer)}
+                                msg="Fine, thanks! hbu?"
+                                answers={message.answers}
+                                key={message.msg}
+                            /> :
+                            <Message msg={message.msg} incoming={message.incoming} key={message.msg}/>)}
+
                 </div>
             </div>
         );
